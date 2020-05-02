@@ -1,16 +1,17 @@
-// variables
+// Variables
 const listaTweets = document.getElementById('lista-tweets')
 
 // Event Listeners
 eventListeners()
-
 function eventListeners() {
     //Cuando se envia el formulario
     document.querySelector('#formulario').addEventListener('submit', agregarTweet)
+
+    // Borrar Tweets
+    listaTweets.addEventListener('click', borrarTweet)
 }
 
 // Funciones
-
 // Añadir tweet del formulario
 function agregarTweet(e) {
     e.preventDefault();
@@ -27,4 +28,14 @@ function agregarTweet(e) {
     li.appendChild(botonBorrar)
     // añade el tweet a la lista
     listaTweets.appendChild(li)
+}
+
+function borrarTweet(e) {
+    e.preventDefault();
+    if (e.target.className == "borrar-tweet") {
+        console.log("Diste click en eliminar")
+        console.log(e.target.parentElement)
+        e.target.parentElement.remove()
+        alert("Tweet Eliminado")
+    }
 }
