@@ -28,6 +28,9 @@ function agregarTweet(e) {
     li.appendChild(botonBorrar)
     // añade el tweet a la lista
     listaTweets.appendChild(li)
+
+    // Añadir a Local Storage
+    agregarTweetLocalStorage(tweet)
 }
 
 function borrarTweet(e) {
@@ -38,4 +41,25 @@ function borrarTweet(e) {
         e.target.parentElement.remove()
         alert("Tweet Eliminado")
     }
+}
+
+// Agregamtweet a local storage
+function agregarTweetLocalStorage(tweet){
+    let tweets;
+    tweets = obtenerTweetsLocalStorage()
+    // Añadir el nuevo tweet
+    tweets.push(tweet)
+    // convertir de string a arreglo para local storage
+    localStorage.setItem( 'tweets', JSON.stringify(tweets) )
+}
+
+function obtenerTweetsLocalStorage(){
+    let tweets;
+    // revisamos los valores de local storage
+    if (localStorage.getItem('tweets') === null ) {
+        tweets = [];
+    } else {
+        tweets = JSON.parse( localStorage.getItem('tweets') )
+    }
+    return tweets;
 }
