@@ -96,7 +96,7 @@ function borrarTweetLocalStorage(tweet){
     tweetBorrar = tweet.substring( 0, tweet.length -1 )
     console.log(tweetBorrar)
     tweets = obtenerTweetsLocalStorage();
-    // console.log(tweets)
+    console.log(tweets)
     tweets.forEach(function( tweet, index ) {
         console.log(tweet)
         if (tweetBorrar === tweet) {
